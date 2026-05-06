@@ -1,0 +1,59 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.BorrowingRecordMapper">
+
+    <select id="selectAll" resultType="com.example.entity.BorrowingRecord">
+        select r.*, b.title as bookTitle, b.author as bookAuthor, b.cover_image as bookCover
+        from borrowing_records r
+        left join books b on r.book_id = b.id
+        <where>
+            <if test="status != null"> and r.status = #{status}</if>
+            <if test="userId != null"> and r.user_id = #{userId}</if>
+            <if test="bookId != null"> and r.book_id = #{bookId}</if>
+            <if test="readerName != null"> and r.reader_name like concat('%', #{readerName}, '%')</if>
+        </where>
+        order by r.id desc
+    </select>
+
+    <delete id="deleteById">
+        delete from borrowing_records where id = #{id}
+    </delete>
+
+    <insert id="insert" parameterType="com.example.entity.BorrowingRecord" useGeneratedKeys="true">
+        insert into borrowing_records
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="bookId != null">book_id,</if>
+            <if test="readerName != null">reader_name,</if>
+            <if test="borrowDate != null">borrow_date,</if>
+            <if test="dueDate != null">due_date,</if>
+            <if test="returnDate != null">return_date,</if>
+            <if test="status != null">status,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="bookId != null">#{bookId},</if>
+            <if test="readerName != null">#{readerName},</if>
+            <if test="borrowDate != null">#{borrowDate},</if>
+            <if test="dueDate != null">#{dueDate},</if>
+            <if test="returnDate != null">#{returnDate},</if>
+            <if test="status != null">#{status},</if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com.example.entity.BorrowingRecord">
+        update borrowing_records
+        <set>
+            <if test="readerName != null">reader_name = #{readerName},</if>
+            <if test="borrowDate != null">borrow_date = #{borrowDate},</if>
+            <if test="dueDate != null">due_date = #{dueDate},</if>
+            <if test="returnDate != null">return_date = #{returnDate},</if>
+            <if test="status != null">status = #{status},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>

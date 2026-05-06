@@ -1,0 +1,145 @@
+.manager-container {
+    background-color: #f0f6fa;
+    min-height: 100vh;
+}
+
+.manager-header {
+    height: 60px;
+    background: linear-gradient(135deg, #2a6a92, #4a90b8);
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 80, 150, 0.12);
+}
+
+.manager-header-left {
+    width: 200px;
+    height: 100%;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.manager-header-left img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.manager-header-left .title {
+    font-weight: 700;
+    font-size: 18px;
+    margin-left: 10px;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.manager-header-center {
+    flex: 1;
+}
+
+.manager-header-right {
+    display: flex;
+    align-items: center;
+    padding-right: 20px;
+}
+
+.manager-main-left {
+    width: 200px;
+    min-height: calc(100vh - 60px);
+    background: #fff;
+    box-shadow: 2px 0 8px rgba(0, 80, 150, 0.06);
+}
+
+.manager-main-right {
+    flex: 1;
+    width: 0;
+    background-color: #f0f6fa;
+    padding: 15px;
+}
+
+/* Element-Plus 样式覆盖 */
+.el-menu {
+    width: 200px;
+    height: 100%;
+    border-right: none !important;
+    background-color: #fff;
+}
+
+.el-sub-menu__title {
+    color: #555 !important;
+    height: 48px;
+    line-height: 48px;
+    font-size: 14px;
+}
+
+.el-sub-menu__title:hover {
+    color: #2a6a92 !important;
+    background-color: #e8f4f8 !important;
+}
+
+.el-menu-item {
+    color: #666;
+    height: 44px;
+    line-height: 44px;
+    font-size: 13px;
+}
+
+.el-menu--inline .el-menu-item {
+    padding-left: 48px !important;
+}
+
+.el-menu .is-active {
+    color: #2a6a92 !important;
+    background-color: #e8f4f8 !important;
+    font-weight: 600;
+    border-right: 3px solid #4a90b8;
+}
+
+.el-menu-item:not(.is-active):hover {
+    color: #4a90b8 !important;
+    background-color: #f5f9fc !important;
+}
+
+.el-tooltip__trigger {
+    outline: none;
+}
+
+:deep(.el-breadcrumb__inner) {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+:deep(.el-breadcrumb__inner:hover) {
+    color: #fff !important;
+}
+
+:deep(.el-breadcrumb__separator) {
+    color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Card 样式 */
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 1px 4px rgba(0, 80, 150, 0.06);
+}
+
+/* 按钮样式 */
+.el-button--primary {
+    background: #4a90b8;
+    border-color: #4a90b8;
+}
+.el-button--primary:hover {
+    background: #5aa0c8;
+    border-color: #5aa0c8;
+}
+.el-button--primary.is-plain {
+    color: #4a90b8;
+    background: #e8f4f8;
+    border-color: #b8d4e8;
+}
+.el-button--primary.is-plain:hover {
+    color: #fff;
+    background: #4a90b8;
+    border-color: #4a90b8;
+}

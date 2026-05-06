@@ -1,0 +1,44 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.BookCategoryMapper">
+
+    <select id="selectAll" resultType="com.example.entity.BookCategory">
+        select * from book_categories
+        <where>
+            <if test="name != null"> and name like concat('%', #{name}, '%')</if>
+            <if test="userId != null"> and user_id = #{userId}</if>
+        </where>
+        order by id desc
+    </select>
+
+    <delete id="deleteById">
+        delete from book_categories where id = #{id}
+    </delete>
+
+    <insert id="insert" parameterType="com.example.entity.BookCategory" useGeneratedKeys="true">
+        insert into book_categories
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="name != null">name,</if>
+            <if test="description != null">description,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="userId != null">#{userId},</if>
+            <if test="name != null">#{name},</if>
+            <if test="description != null">#{description},</if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com.example.entity.BookCategory">
+        update book_categories
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="description != null">description = #{description},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>
